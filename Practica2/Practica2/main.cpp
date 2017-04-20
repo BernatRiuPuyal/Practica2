@@ -7,4 +7,9 @@
 #include <algorithm>
 #include <cstdlib>
 
+int main(void) {
+
+	
+}
+
 
