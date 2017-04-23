@@ -26,13 +26,13 @@ class Combinations {
 			barreja barrejaInsert;
 			std::pair<barreja, std::string> combinacioInsert;
 
-			for (int it = line.begin; it < line.end; it++) {
+			for (auto it = line.begin; it < line.end; it++) {
 				if (line[it] == ' ')
 					line.erase(line[it],1);
 			}
 
-			unsigned int pos1 = line.find("=");
-			unsigned int pos2 = line.find("+");
+			size_t pos1 = line.find("=");
+			size_t pos2 = line.find("+");
 
 			combinacioInsert.second = line.substr(0,pos1);
 					
