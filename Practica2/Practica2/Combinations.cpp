@@ -5,11 +5,29 @@
 #include <fstream>
 #include <iostream>
 
+
+
+
 class Combinations {
 
 	typedef std::pair<std::string, std::string> barreja;
 
-	std::unordered_map < barreja, std::string>combinations;
+
+	struct barrejaHash {
+
+		size_t operator()(const barreja &c) {
+
+			return ((std::hash<char>()(c.first[0]) ^ (std::hash<char>()(c.second[0]) << 1)) >> 1);
+
+		}
+
+		};
+	
+
+
+
+
+	std::unordered_map < barreja, std::string,barrejaHash>combinations;
 
 
 
@@ -26,9 +44,9 @@ class Combinations {
 			barreja barrejaInsert;
 			std::pair<barreja, std::string> combinacioInsert;
 
-			for (auto it = line.begin; it < line.end; it++) {
-				if (line[it] == ' ')
-					line.erase(line[it],1);
+			for (auto it = line.begin(); it < line.end(); it++) {
+				if (*it == ' ')
+					line.erase(*it,1);
 			}
 
 			size_t pos1 = line.find("=");
@@ -38,7 +56,7 @@ class Combinations {
 					
 
 			barrejaInsert.first = line.substr(pos1, pos2);
-			barrejaInsert.second = line.substr(pos2, line.end);
+			barrejaInsert.second = line.substr(pos2, *line.end());
 
 			combinacioInsert.first = barrejaInsert;
 
