@@ -13,18 +13,17 @@ int main(void) {
 	std::vector<std::string>table({ "Air","Water","Earth","Fire" });
 	std::vector<std::string>discovered({ "Air","Water","Earth","Fire" });
 
-	int score;
+	int score = 0;
 
-	Combinations comca();
-
-	while(score < comca().combinations.size()){
+	Combinations posCom(1);
 
 	
 
+	while (score < posCom.combis.size()) {
 
+		
+		
 
-
-
+	}
 }
-
 
