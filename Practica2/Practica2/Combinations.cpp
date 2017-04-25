@@ -1,5 +1,5 @@
 // rebuda i guardatge de les possibles combinacions
-
+/*
 #include <unordered_map>
 #include <string>
 #include <fstream>
@@ -17,13 +17,27 @@ class Combinations {
 
 		size_t operator()(const barreja &c) {
 
-			return ((std::hash<char>()(c.first[0]) ^ (std::hash<char>()(c.second[0]) << 1)) >> 1);
+			return ((std::hash<std::string>()(c.first) ^ (std::hash<std::string>()(c.second) << 1)) >> 1);
 
 		}
 
 		};
 	
+	void spaceDeleter(std::string stringi) {// canviar el temita amb les funcions de std::string
 
+		auto it = stringi.begin();
+
+		while (*it == ' ') {
+			stringi.erase(it);
+			it++;
+		}
+		auto rit = stringi.end()--;
+
+		while (*rit == ' ') {
+			stringi.erase(rit);
+			rit--;
+		}
+	}
 
 
 
@@ -44,11 +58,7 @@ class Combinations {
 			barreja barrejaInsert;
 			std::pair<barreja, std::string> combinacioInsert;
 
-			for (auto it = line.begin(); it < line.end(); it++) {
-				if (*it == ' ')
-					line.erase(*it,1);
-			}
-
+			
 			size_t pos1 = line.find("=");
 			size_t pos2 = line.find("+");
 
@@ -57,6 +67,13 @@ class Combinations {
 
 			barrejaInsert.first = line.substr(pos1, pos2);
 			barrejaInsert.second = line.substr(pos2, *line.end());
+
+			
+			spaceDeleter(barrejaInsert.first);
+			spaceDeleter(barrejaInsert.second);
+			spaceDeleter(combinacioInsert.second);
+			
+
 
 			combinacioInsert.first = barrejaInsert;
 
@@ -73,4 +90,4 @@ class Combinations {
 
 
 
-};
+};*/
