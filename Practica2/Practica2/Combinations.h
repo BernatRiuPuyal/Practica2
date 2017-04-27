@@ -31,11 +31,13 @@ class Combinations {
 
 
 public:
-	std::unordered_map < barreja, std::string, barrejaHash> combis;
+	std::unordered_map < barreja, std::string, barrejaHash> combinations;
 
 	
 
 	Combinations();
+
+	void print();
 
 private:
 	void spaceDeleter(std::string stringi); 

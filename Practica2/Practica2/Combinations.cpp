@@ -8,18 +8,11 @@ void Combinations::spaceDeleter(std::string stringi)
 {
 	// canviar el temita amb les funcions de std::string
 
-	auto it = stringi.begin();
+	size_t start = stringi.find_last_not_of(" ");
 
-	while (*it == ' ') {
-		stringi.erase(it);
-		it++;
-	}
-	auto rit = stringi.end()--;
+	stringi = stringi.substr(start, start - stringi.find_first_not_of(" ")+ 1);
 
-	while (*rit == ' ') {
-		stringi.erase(rit);
-		rit--;
-	}
+
 }
 
 
@@ -42,8 +35,8 @@ Combinations::Combinations() {
 		combinacioInsert.second = line.substr(0, pos1);
 
 
-		barrejaInsert.first = line.substr(pos1, pos2);
-		barrejaInsert.second = line.substr(pos2, *line.end());
+		barrejaInsert.first = line.substr(pos1 + 1, pos2 - (pos1 + 1));
+		barrejaInsert.second = line.substr(pos2 + 1, std::string::npos);
 
 
 		spaceDeleter(barrejaInsert.first);
@@ -54,7 +47,19 @@ Combinations::Combinations() {
 
 		combinacioInsert.first = barrejaInsert;
 
-		combis.insert(combinacioInsert);
+		combinations.insert(combinacioInsert);
 
 	}
+}
+
+void Combinations::print()
+{
+
+	for (auto it = combinations.begin(); it != combinations.end(); it++) {
+
+		std::cout << (*it).first.first << " + " << (*it).first.second << " = " << (*it).second << std::endl;
+
+	}
+
+
 }
