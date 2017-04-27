@@ -23,7 +23,7 @@ void Combinations::spaceDeleter(std::string stringi)
 }
 
 
-Combinations::Combinations(int i) {
+Combinations::Combinations() {
 	std::ifstream felements("elements.dat");
 
 

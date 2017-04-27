@@ -35,7 +35,7 @@ public:
 
 	
 
-	Combinations(int i);
+	Combinations();
 
 private:
 	void spaceDeleter(std::string stringi); 

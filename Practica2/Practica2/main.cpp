@@ -13,9 +13,9 @@ int main(void) {
 	std::vector<std::string>table({ "Air","Water","Earth","Fire" });
 	std::vector<std::string>discovered({ "Air","Water","Earth","Fire" });
 
-	int score = 0;
+	int score;
 
-	Combinations posCom(1);
+	Combinations posCom;
 
 	
 
