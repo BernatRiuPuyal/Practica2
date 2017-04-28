@@ -3,10 +3,11 @@
 #include <unordered_map>
 #include <iostream>
 #include <string>
-#include <Windows.h>
+#include <windows.h>
 #include <algorithm>
 #include <cstdlib>
 #include "Combinations.h"
+#include "Instructions.h"
 
 void printVector(std::vector<std::string> vectorio) {
 
@@ -16,10 +17,18 @@ void printVector(std::vector<std::string> vectorio) {
 	}
 }
 
+bool actDiscovered(std::vector discovered, std::string newElement) {
 
+	bool toAdd = true;
 
+	for (int i = 0; i < discovered.sizeof(); i++) {
+		if (newElement == discovered[i]) {
+			toAdd = false;
+		}
+	}
 
-
+	return toAdd;
+}
 
 int main(void) {
 
@@ -32,7 +41,6 @@ int main(void) {
 	Combinations posCom;
 
 	posCom.print();
-	
 
 
 	while (score < posCom.combinations.size()) {
@@ -41,8 +49,10 @@ int main(void) {
 		std::cout << "Elements in your table:" << std::endl;
 		printVector(table);
 
-
-		
+		if (actDiscoverd(discovered, /*NEW - ELEMENT*/)) {
+			discovered.push_back(/*NEW - ELEMENT*/);
+			score++;
+		}
 
 	}
 }
