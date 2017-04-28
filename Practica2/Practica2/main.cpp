@@ -17,11 +17,11 @@ void printVector(std::vector<std::string> vectorio) {
 	}
 }
 
-bool actDiscovered(std::vector discovered, std::string newElement) {
+bool actDiscovered(std::vector<std::string> discovered, std::string newElement) {
 
 	bool toAdd = true;
 
-	for (int i = 0; i < discovered.sizeof(); i++) {
+	for (int i = 0; i < discovered.size; i++) {
 		if (newElement == discovered[i]) {
 			toAdd = false;
 		}
