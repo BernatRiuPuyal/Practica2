@@ -1,25 +1,17 @@
 #include "Combinations.h"
 
 
-
-
-
 void Combinations::spaceDeleter(std::string stringi)
 {
-	// canviar el temita amb les funcions de std::string
-
 	size_t start = stringi.find_last_not_of(" ");
 
 	stringi = stringi.substr(start, start - stringi.find_first_not_of(" ")+ 1);
-
 
 }
 
 
 Combinations::Combinations() {
 	std::ifstream felements("elements.dat");
-
-
 
 	std::string line;
 
@@ -60,6 +52,5 @@ void Combinations::print()
 		std::cout << (*it).first.first << " + " << (*it).first.second << " = " << (*it).second << std::endl;
 
 	}
-
 
 }
