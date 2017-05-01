@@ -17,7 +17,20 @@ void printVector(std::vector<std::string> vectorio) {
 	}
 }
 
-bool actDiscovered(std::vector<std::string> discovered, std::string newElement) {
+bool isNumber(std::string){
+
+	bool isNumber = true;
+
+	for(int i = 0; i < first.length(); i++){
+		if(!isdigit(first[i])){
+			isNumber = false;
+		}		
+	}
+
+	return isNumber;
+}
+
+bool actualize(std::vector<std::string> discovered, std::string newElement) {
 
 	bool toAdd = true;
 
@@ -37,9 +50,8 @@ int main(void) {
 	
 	int score = 0;
 	
-	std::string first, second, inString;
+	std::string first, second, inString, newElement;
 	int inInt1, inInt2;
-	bool isNumber;
 
 	Combinations posCom;
 
@@ -53,19 +65,12 @@ int main(void) {
 
 		std::cin >> first >> second;
 		
-		isNumber = true;
+		if(isNumber(first)){
 
-		for(int i = 0; i < first.length(); i++){
-			if(!isdigit(first[i])){
-				isNumber = false;
-			}		
-		}
-		
-		if(isNumber){
 			inInt1 = atoi(first);
 			inInt2 = atoi(second);
 
-			//aqui funció per combinar dos elements. 
+			newElement = posCom.combinations[first, second]; //no funciona aixi, em sembla
 
 		} else {
 
@@ -99,8 +104,12 @@ int main(void) {
 			}
 		}
 
-		if (actDiscoverd(discovered, /*NEW - ELEMENT*/)) {
-			discovered.push_back(/*NEW - ELEMENT*/);
+		if (actualize(discovered, newElement)) {
+			discovered.push_back(newElement);
+
+			table.erase(table.begin() + first);
+			table.erase(table.begin() + second);
+
 			score++;
 		}
 	}
