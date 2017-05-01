@@ -12,12 +12,6 @@ typedef std::pair<std::string, std::string> barreja;
 
 class Combinations {
 
-	
-
-	
-
-
-
 	struct barrejaHash {
 
 		size_t operator()(const barreja &c) const {
@@ -28,27 +22,15 @@ class Combinations {
 
 	};
 
+	public:
+		std::unordered_map < barreja, std::string, barrejaHash> combinations;
 
+		Combinations();
 
-public:
-	std::unordered_map < barreja, std::string, barrejaHash> combinations;
+		void print();
 
-	
-
-	Combinations();
-
-	void print();
-
-private:
-	void spaceDeleter(std::string stringi); 
-
-	
-
-
-
-	
-
-		
+	private:
+		void spaceDeleter(std::string stringi); 
 
 };
 
