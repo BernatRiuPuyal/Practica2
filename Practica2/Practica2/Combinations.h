@@ -29,6 +29,8 @@ class Combinations {
 
 		void print();
 
+		bool loadCheck();
+
 	private:
 		void spaceDeleter(std::string &stringi); 
 

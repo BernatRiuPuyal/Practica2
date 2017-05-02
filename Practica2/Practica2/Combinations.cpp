@@ -7,7 +7,7 @@ void Combinations::spaceDeleter(std::string &stringi)
 
 	stringi = stringi.substr(start, stringi.find_last_not_of(" ") - start + 1);
 
-	
+
 
 }
 
@@ -55,4 +55,11 @@ void Combinations::print()
 
 	}
 
+}
+
+bool Combinations::loadCheck()
+{
+		
+	
+	return (combinations.size() >= 1);
 }

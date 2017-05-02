@@ -14,7 +14,7 @@ void printVector(std::vector<std::string> vectorio) {
 
 	for (int it = 0; it < vectorio.size(); it++) {
 
-		std::cout << it/* + 1*/ << ": " << vectorio[it] << std::endl;
+		std::cout << it  << ": " << vectorio[it] << std::endl;
 	}
 }
 
@@ -48,7 +48,7 @@ int main(void) {
 
 	Combinations posCom;
 
-	//posCom.print();
+	if (!posCom.loadCheck()) system("pause");
 
 	while (score < posCom.combinations.size()) {
 
@@ -68,7 +68,7 @@ int main(void) {
 
 			inInt1 = atoi(first.c_str()); // c_str converteix  de string de C++ a string de C, que es amb el qual funciona l'atoi
 			inInt2 = atoi(second.c_str());
-			if (inInt1 < table.size() && inInt2 < table.size()){
+			if (inInt1 < table.size() && inInt2 < table.size() && inInt1 != inInt2){
 				barreja entrada(table[inInt1], table[inInt2]);
 				bool foundElement = false;
 				if (posCom.combinations.count(entrada) == 0) {
@@ -110,7 +110,8 @@ int main(void) {
 
 			}
 			else {
-				std::cout << "Number out of the table" << std::endl;
+				if (inInt1 == inInt2) std::cout << "You can not combine a element with itself" << std::endl;
+				else std::cout << "Number out of the table" << std::endl;
 			}
 		}
 		else {
@@ -174,32 +175,6 @@ int main(void) {
 
 
 
-			//switch (first) {
-			//	case "add":
-			//		add(table, inInt2);
-			//		break;
-			//	case "add basics":
-			//		addBasics(table);
-			//		break;
-			//	case "delete":
-			//		deleteFunct(table, inInt2);
-			//		break;
-			//	case "info":
-			//		info(table, inInt2);
-			//		break;
-			//	case "sort":
-			//		sort(table);
-			//		break;
-			//	case "clean":
-			//		clean(table);
-			//		break;
-			//	case "help":
-			//		help();
-			//		break;
-			//	default:
-			//		std::cout << "Instruction not understood" << std::endl;
-			//		break;
-			//}
 		}
 
 	}
