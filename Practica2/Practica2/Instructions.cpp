@@ -29,18 +29,19 @@ void info(std::vector<std::string> llista, int nombre) { //capselera <windows.h>
 	std::string wikiLink = "https://en.wikipedia.org/wiki/";
 	wikiLink.append(llista[nombre]);
 
-	ShellExecuteA​(​nullptr​, ​​"open"​, ​ wikiLink, ​​nullptr​, ​​nullptr​, ​SW_SHOWNORMAL​); //RULA??????
+	
+//	ShellExecuteA(nullptr, "open", wikiLink, nullptr, nullptr, SW_SHOWNORMAL);
 }
 
 void sort(std::vector<std::string> llista) {
 	std::string swapper;
 	bool keepSort = true;
 
-	for (int i = 0; (i < llista.size) && keepSort; i++) {
+	for (int i = 0; (i < llista.size()) && keepSort; i++) {
 
 		keepSort = false;
 
-		for (int j = 0; j < llista.size - 1; j++) {
+		for (int j = 0; j < llista.size() - 1; j++) {
 			if (llista[j + 1] > llista[j]) {
 
 				swapper = llista[j];
@@ -54,8 +55,8 @@ void sort(std::vector<std::string> llista) {
 }
 
 void clean(std::vector<std::string> llista) {
-	for (int i = 0; i < llista.size; i++) {
-		for (int j = 0; j < llista.size; j++) {
+	for (int i = 0; i < llista.size(); i++) {
+		for (int j = 0; j < llista.size(); j++) {
 			if (llista[i] == llista[j] && i != j) {
 				llista.erase(llista.begin() + j);
 			}
