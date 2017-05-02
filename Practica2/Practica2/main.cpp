@@ -52,14 +52,14 @@ int main(void) {
 
 	while (score < posCom.combinations.size()) {
 
-		system("cls");
+		
 
-		std::cout << "SCORE:" << score << std::endl;
+		std::cout << "SCORE:" << score << std::endl << std::endl;
 		std::cout << "Inventory:" << std::endl;
 		printVector(table);
 
 		std::cin >> first >> second;
-
+		system("cls");
 		/*first = inString.substr(0, inString.find(" "));
 		second = inString.substr(inString.find(" ") + 1, inString.npos - inString.find(" "));*/
 
@@ -68,58 +68,76 @@ int main(void) {
 
 			inInt1 = atoi(first.c_str()); // c_str converteix  de string de C++ a string de C, que es amb el qual funciona l'atoi
 			inInt2 = atoi(second.c_str());
-
-			barreja entrada(table[inInt1], table[inInt2]);
-			bool foundElement = false;
-			if (posCom.combinations.count(entrada) == 0) {
-				entrada.first = table[inInt2];
-				entrada.second = table[inInt1];
-
+			if (inInt1 < table.size() && inInt2 < table.size()){
+				barreja entrada(table[inInt1], table[inInt2]);
+				bool foundElement = false;
 				if (posCom.combinations.count(entrada) == 0) {
-					std::cout << "Not a possible Combination";
+					entrada.first = table[inInt2];
+					entrada.second = table[inInt1];
+
+					if (posCom.combinations.count(entrada) == 0) {
+						std::cout << "Not a possible Combination" << std::endl;
+					}
+					else {
+						foundElement = true;
+					}
 				}
 				else {
 					foundElement = true;
 				}
+
+				if (foundElement) {
+					newElement = posCom.combinations[entrada];
+					table.erase(table.begin() + max(inInt1, inInt2));
+					table.erase(table.begin() + min(inInt1, inInt2));
+					table.push_back(newElement);
+
+
+
+					bool discoveredElement = true;
+					for (int i = 0; i < discovered.size(); i++) {
+						if (newElement == discovered[i]) {
+							discoveredElement = false;
+						}
+					}
+					if (discoveredElement) {
+						discovered.push_back(newElement);
+						score++;
+					}
+
+				}
+
+
 			}
 			else {
-				foundElement = true;
+				std::cout << "Number out of the table" << std::endl;
 			}
-
-			if (foundElement) {
-				newElement = posCom.combinations[entrada];
-				table.erase(table.begin() + max(inInt1,inInt2));
-				table.erase(table.begin() + min(inInt1,inInt2));
-				table.push_back(newElement);
-
-
-
-				bool discoveredElement = true;
-				for (int i = 0; i < discovered.size(); i++) {
-					if (newElement == discovered[i]) {
-						discoveredElement = false;
-					}
-				}
-				if (discoveredElement) {
-					discovered.push_back(newElement);
-					score++;
-				}
-
-			}
-
-
 		}
 		else {
 
-			inInt2 = atoi(second.c_str());
-
-
+			
 			if (first == "add") {
-				add(table, inInt2);
+				
+
+				if (second == "basics") {
+
+					addBasics(table);
+				}
+				else if (isNumber(second)) {
+					inInt2 = atoi(second.c_str());
+					if (inInt2 < table.size()) {
+						add(table, inInt2);
+					}
+					else {
+						std::cout << "Number out of the table" << std::endl;
+					}
+				}
+				else {
+					std::cout << "Instruction not understood" << std::endl;
+				}
+				
 			}
-			else if (first == "addBasics") {
-				addBasics(table);
-			}
+			
 			else if (first == "delete") {
 				deleteFunct(table, inInt2);
 			}

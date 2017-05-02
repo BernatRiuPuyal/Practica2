@@ -10,18 +10,18 @@
 
 //////// FUNCIONS DE LES INSTRUCCIONS DEL JUGADOR
 
-void add(std::vector<std::string> llista, int nombre) {
+void add(std::vector<std::string> &llista, int nombre) {
 	llista.push_back(llista[nombre]);
 }
 
-void addBasics(std::vector<std::string> llista) {  //segur que es pot fer en una linea amb el insert o algo casun l'os predrer
+void addBasics(std::vector<std::string> &llista) {  //segur que es pot fer en una linea amb el insert o algo casun l'os predrer
 	llista.push_back("Air");
 	llista.push_back("Earth");
 	llista.push_back("Fire");
 	llista.push_back("Water");
 }
 
-void deleteFunct(std::vector<std::string> llista, int nombre) {
+void deleteFunct(std::vector<std::string> &llista, int nombre) {
 	llista.erase(llista.begin() + nombre);
 }
 
@@ -33,7 +33,7 @@ void info(std::vector<std::string> llista, int nombre) { //capselera <windows.h>
     ShellExecuteA(nullptr, "open", wikiLink.c_str(), nullptr, nullptr, SW_SHOWNORMAL);
 }
 
-void sort(std::vector<std::string> llista) {
+void sort(std::vector<std::string> &llista) {
 	std::string swapper;
 	bool keepSort = true;
 
@@ -54,7 +54,7 @@ void sort(std::vector<std::string> llista) {
 	}
 }
 
-void clean(std::vector<std::string> llista) {
+void clean(std::vector<std::string> &llista) {
 	for (int i = 0; i < llista.size(); i++) {
 		for (int j = 0; j < llista.size(); j++) {
 			if (llista[i] == llista[j] && i != j) {
