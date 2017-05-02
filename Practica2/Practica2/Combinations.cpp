@@ -1,11 +1,13 @@
 #include "Combinations.h"
 
 
-void Combinations::spaceDeleter(std::string stringi)
+void Combinations::spaceDeleter(std::string &stringi)
 {
-	size_t start = stringi.find_last_not_of(" ");
+	size_t start = stringi.find_first_not_of(" ");
 
-	stringi = stringi.substr(start, start - stringi.find_first_not_of(" ")+ 1);
+	stringi = stringi.substr(start, stringi.find_last_not_of(" ") - start + 1);
+
+	
 
 }
 

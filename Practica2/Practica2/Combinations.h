@@ -30,7 +30,7 @@ class Combinations {
 		void print();
 
 	private:
-		void spaceDeleter(std::string stringi); 
+		void spaceDeleter(std::string &stringi); 
 
 };
 
