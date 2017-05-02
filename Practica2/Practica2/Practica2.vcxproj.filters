@@ -29,6 +29,9 @@
     <ClInclude Include="Combinations.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Instructions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="elements.dat">

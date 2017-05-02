@@ -116,6 +116,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Combinations.h" />
+    <ClInclude Include="Instructions.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="elements.dat" />
