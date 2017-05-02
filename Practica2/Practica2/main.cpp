@@ -58,13 +58,13 @@ int main(void) {
 		std::cout << "Inventory:" << std::endl;
 		printVector(table);
 
-		std::cin >> first >> second;
+		std::cin >> first;
 		system("cls");
-		/*first = inString.substr(0, inString.find(" "));
-		second = inString.substr(inString.find(" ") + 1, inString.npos - inString.find(" "));*/
+		
 
 
 		if (isNumber(first)) {
+			std::cin >> second;
 
 			inInt1 = atoi(first.c_str()); // c_str converteix  de string de C++ a string de C, que es amb el qual funciona l'atoi
 			inInt2 = atoi(second.c_str());
@@ -117,7 +117,7 @@ int main(void) {
 
 			
 			if (first == "add") {
-				
+				std::cin >> second;
 
 				if (second == "basics") {
 
@@ -139,11 +139,24 @@ int main(void) {
 			}
 			
 			else if (first == "delete") {
+				std::cin >> second;
+				inInt2 = atoi(second.c_str());
 				deleteFunct(table, inInt2);
 			}
 
 			else if (first == "info") {
-				info(table, inInt2);
+				std::cin >> second;
+
+				inInt2 = atoi(second.c_str());
+
+				if (inInt2 < table.size()) {
+					info(table, inInt2);
+				}
+				else {
+					std::cout << "Number out of the table" << std::endl;
+				}
+
+				
 			}
 			else if (first == "sort") {
 				sort(table);
