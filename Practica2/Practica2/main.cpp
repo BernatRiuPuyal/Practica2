@@ -10,14 +10,11 @@
 #include "Instructions.h"
 
 
-
-
-
 void printVector(std::vector<std::string> vectorio) {
 
 	for (int it = 0; it < vectorio.size(); it++) {
 
-		std::cout << it + 1 << ": " << vectorio[it] << std::endl;
+		std::cout << it/* + 1*/ << ": " << vectorio[it] << std::endl;
 	}
 }
 
@@ -65,6 +62,8 @@ int main(void) {
 
 	while (score < posCom.combinations.size()) {
 
+		system("cls");
+
 		std::cout << "SCORE:" << score << std::endl;
 		std::cout << "Inventory:" << std::endl;
 		printVector(table);
@@ -94,13 +93,12 @@ int main(void) {
 			
 
 			if (first == "add") {
-
 				add(table, inInt2);
 			}
-			else if (first == "add basics") {
+			else if (first == "addBasics") {
 				addBasics(table);
 			}
-			else if (first == "add basics") {
+			else if (first == "delete") {
 				deleteFunct(table, inInt2);
 			}
 

@@ -30,7 +30,7 @@ void info(std::vector<std::string> llista, int nombre) { //capselera <windows.h>
 	wikiLink.append(llista[nombre]);
 
 	
-//	ShellExecuteA(nullptr, "open", wikiLink, nullptr, nullptr, SW_SHOWNORMAL);
+    ShellExecuteA(nullptr, "open", wikiLink.c_str(), nullptr, nullptr, SW_SHOWNORMAL);
 }
 
 void sort(std::vector<std::string> llista) {
