@@ -22,6 +22,7 @@ void addBasics(std::vector<std::string> &llista) {  //segur que es pot fer en un
 }
 
 void deleteFunct(std::vector<std::string> &llista, int nombre) {
+	if(llista.size()>=nombre)
 	llista.erase(llista.begin() + nombre);
 }
 
