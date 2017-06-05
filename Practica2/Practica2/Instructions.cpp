@@ -14,14 +14,14 @@ void add(std::vector<std::string> &llista, int nombre) {
 	llista.push_back(llista[nombre]);
 }
 
-void addBasics(std::vector<std::string> &llista) {  //segur que es pot fer en una linea amb el insert o algo casun l'os predrer
+void addBasics(std::vector<std::string> &llista) {
 	llista.push_back("Air");
 	llista.push_back("Earth");
 	llista.push_back("Fire");
 	llista.push_back("Water");
 }
 
-void deleteFunct(std::vector<std::string> &llista, int nombre) {
+void deleteFunct(std::vector<std::string> &llista, int nombre) {			//modificat // no testejat
 	if(llista.size()>=nombre && !llista.empty())
 	llista.erase(llista.begin() + nombre);
 }
@@ -56,11 +56,15 @@ void sort(std::vector<std::string> &llista) {
 }
 
 void clean(std::vector<std::string> &llista) {
-	for (int i = 0; i < llista.size(); i++) {
-		for (int j = 0; j < llista.size(); j++) {
+	std::vector<std::string> a{ llista };					//modificat // no testejat
+	std::vector<std::string> b{ llista };
+	
+	for (int i = 0; i < a.size(); i++) {
+		for (int j = 0; j < b.size(); j++) {
 			if (llista[i] == llista[j] && i != j) {
 				llista.erase(llista.begin() + j);
 			}
+			b = llista;
 		}
 	}
 }
