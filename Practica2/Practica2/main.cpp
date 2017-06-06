@@ -40,6 +40,7 @@ int main(void) {
 
 	std::vector<std::string>table({ "Air","Water","Earth","Fire" });
 	std::vector<std::string>discovered({ "Air","Water","Earth","Fire" });
+	std::vector<std::string>::iterator it;
 	
 	int score = 0;
 	
@@ -51,7 +52,6 @@ int main(void) {
 	if (!posCom.loadCheck()) system("pause");
 
 	while (score < posCom.combinations.size()) {
-
 		
 
 		std::cout << "SCORE:" << score << std::endl << std::endl;
@@ -70,43 +70,30 @@ int main(void) {
 			inInt2 = atoi(second.c_str());
 			if (inInt1 < table.size() && inInt2 < table.size() && inInt1 != inInt2){
 				barreja entrada(table[inInt1], table[inInt2]);
-				bool foundElement = false;
-				if (posCom.combinations.count(entrada) == 0) {
-					entrada.first = table[inInt2];
-					entrada.second = table[inInt1];
+				barreja entradaInv(table[inInt2], table[inInt1]); //entrada inversa
 
-					if (posCom.combinations.count(entrada) == 0) {
-						std::cout << "Not a possible Combination" << std::endl;
-					}
-					else {
-						foundElement = true;
-					}
+				if (posCom.combinations.count(entrada) == 0) {							//es pot fer amb find??
+					std::cout << "Not a possible Combination" << std::endl;
+				}
+				else if (posCom.combinations.count(entradaInv) == 0) {
+					std::cout << "Not a possible Combination" << std::endl;
+					entrada = entradaInv;
 				}
 				else {
-					foundElement = true;
-				}
-
-				if (foundElement) {
 					newElement = posCom.combinations[entrada];
 					table.erase(table.begin() + max(inInt1, inInt2));
 					table.erase(table.begin() + min(inInt1, inInt2));
 					table.push_back(newElement);
 
+					it = find (discovered.begin()), discovered.end(), newElement);
 
-
-					bool discoveredElement = true;
-					for (int i = 0; i < discovered.size(); i++) {
-						if (newElement == discovered[i]) {
-							discoveredElement = false;
-						}
-					}
-					if (discoveredElement) {
+					if (it != discovered.end())
+					{
 						discovered.push_back(newElement);
 						score++;
 					}
 
 				}
-
 
 			}
 			else {
@@ -156,7 +143,6 @@ int main(void) {
 				else {
 					std::cout << "Number out of the table" << std::endl;
 				}
-
 				
 			}
 			else if (first == "sort") {
