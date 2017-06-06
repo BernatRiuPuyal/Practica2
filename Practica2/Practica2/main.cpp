@@ -40,7 +40,6 @@ int main(void) {
 
 	std::vector<std::string>table({ "Air","Water","Earth","Fire" });
 	std::vector<std::string>discovered({ "Air","Water","Earth","Fire" });
-	std::vector<std::string>::iterator it;
 	
 	int score = 0;
 	
@@ -85,9 +84,7 @@ int main(void) {
 					table.erase(table.begin() + min(inInt1, inInt2));
 					table.push_back(newElement);
 
-					it = find (discovered.begin()), discovered.end(), newElement);
-
-					if (it != discovered.end())
+					if (std::find(discovered.begin(), discovered.end(), newElement) != discovered.end())
 					{
 						discovered.push_back(newElement);
 						score++;
