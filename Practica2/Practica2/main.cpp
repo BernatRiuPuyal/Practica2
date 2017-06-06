@@ -43,7 +43,8 @@ int main(void) {
 	
 	int score = 0;
 	
-	std::string first, second, inString, newElement;
+	std::string first, second, inString;
+
 	int inInt1, inInt2;
 
 	Combinations posCom;
@@ -71,22 +72,24 @@ int main(void) {
 				barreja entrada(table[inInt1], table[inInt2]);
 				barreja entradaInv(table[inInt2], table[inInt1]); //entrada inversa
 
-				if (posCom.combinations.count(entrada) == 0) {							//es pot fer amb find??
+
+				auto newElement = posCom.combinations.find(entrada);
+
+				if (newElement == posCom.combinations.end()) newElement = posCom.combinations.find(entradaInv);
+
+				if (newElement == posCom.combinations.end()) {
 					std::cout << "Not a possible Combination" << std::endl;
 				}
-				else if (posCom.combinations.count(entradaInv) == 0) {
-					std::cout << "Not a possible Combination" << std::endl;
-					entrada = entradaInv;
-				}
+
 				else {
-					newElement = posCom.combinations[entrada];
+					
 					table.erase(table.begin() + max(inInt1, inInt2));
 					table.erase(table.begin() + min(inInt1, inInt2));
-					table.push_back(newElement);
+					table.push_back(newElement->second);
 
-					if (std::find(discovered.begin(), discovered.end(), newElement) != discovered.end())
+					if (std::find(discovered.begin(), discovered.end(), newElement->second) != discovered.end())
 					{
-						discovered.push_back(newElement);
+						discovered.push_back(newElement->second);
 						score++;
 					}
 
