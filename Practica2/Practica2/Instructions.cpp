@@ -7,6 +7,7 @@
 #include <windows.h>
 #include <algorithm>
 #include <cstdlib>
+#include <set>
 
 //////// FUNCIONS DE LES INSTRUCCIONS DEL JUGADOR
 
@@ -14,7 +15,7 @@ void add(std::vector<std::string> &llista, int nombre) {
 	llista.push_back(llista[nombre]);
 }
 
-void addBasics(std::vector<std::string> &llista) {  //segur que es pot fer en una linea amb el insert o algo casun l'os predrer
+void addBasics(std::vector<std::string> &llista) {
 	llista.push_back("Air");
 	llista.push_back("Earth");
 	llista.push_back("Fire");
@@ -22,6 +23,7 @@ void addBasics(std::vector<std::string> &llista) {  //segur que es pot fer en un
 }
 
 void deleteFunct(std::vector<std::string> &llista, int nombre) {
+	if(llista.size()>=nombre && !llista.empty())
 	llista.erase(llista.begin() + nombre);
 }
 
@@ -55,13 +57,10 @@ void sort(std::vector<std::string> &llista) {
 }
 
 void clean(std::vector<std::string> &llista) {
-	for (int i = 0; i < llista.size(); i++) {
-		for (int j = 0; j < llista.size(); j++) {
-			if (llista[i] == llista[j] && i != j) {
-				llista.erase(llista.begin() + j);
-			}
-		}
-	}
+	std::set<std::string> a (llista.begin(), llista.end());
+	std::vector<std::string> b(a.begin(), a.end());
+
+	llista = b;
 }
 
 void help() {
@@ -81,5 +80,3 @@ void help() {
 
 	std::cout << "Press SPACE to continue.";
 }
-
-///////
